@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 
 import Link from 'next/link';
@@ -36,28 +35,28 @@ const artists = [
   {
     name: 'Kael Vortex',
     work: '/images/work-artist-1.png',
-    bio: 'Kael Vortex is a digital artist and architect based in Berlin, known for their minimalist geometric compositions that explore the intersection of technology and human perception. With a background in computational design, Kael uses algorithms and generative processes to create works that balance order and chaos, often reflecting on the future of human-machine collaboration. Their pieces have been exhibited in virtual galleries across Web3 platforms, including Decentraland, and have been minted as NFTs on Ethereum. Kael’s art challenges viewers to find harmony in the asymmetry of a rapidly digitizing world, blending Bauhaus principles with futuristic aesthetics.',
+    bio: 'Kael Vortex is a digital artist and architect based in Berlin, known for their minimalist geometric compositions that explore the intersection of technology and human perception. With a background in computational design, Kael uses algorithms and generative processes to create works that balance order and chaos, often reflecting on the future of human-machine collaboration. Their pieces have been exhibited in virtual galleries across Web3 platforms, including Decentraland, and have been minted as NFTs on Ethereum. Kael’s art challenges viewers to find harmony in the asymmetry of a rapidly digitizing world, blending Bauhaus principles with futuristic aesthetics. (Note: This artist profile and artwork are AI-generated placeholders for demonstration purposes and will be replaced with real content.)',
     philosophy: '"I believe art should be a blueprint for the future—a space where order and chaos coexist in harmony."',
   },
   {
     name: 'Zephyr Kane',
     work: '/images/work-artist-2.png',
-    bio: 'Zephyr Kane is a New York-based artist whose neo-expressionist works delve into the raw, unfiltered emotions of modern life. Drawing inspiration from the gritty energy of urban environments and the legacy of artists like Jean-Michel Basquiat, Zephyr uses bold colors, chaotic lines, and fragmented forms to explore themes of mental health, identity, and societal pressure. Their art has been showcased in underground NFT marketplaces and Web3 art collectives, where they’ve gained a cult following for their emotionally charged pieces. Zephyr often incorporates text and symbols into their work, creating a visual language that speaks to the struggles of the digital age.',
+    bio: 'Zephyr Kane is a New York-based artist whose neo-expressionist works delve into the raw, unfiltered emotions of modern life. Drawing inspiration from the gritty energy of urban environments and the legacy of artists like Jean-Michel Basquiat, Zephyr uses bold colors, chaotic lines, and fragmented forms to explore themes of mental health, identity, and societal pressure. Their art has been showcased in underground NFT marketplaces and Web3 art collectives, where they’ve gained a cult following for their emotionally charged pieces. Zephyr often incorporates text and symbols into their work, creating a visual language that speaks to the struggles of the digital age. (Note: This artist profile and artwork are AI-generated placeholders for demonstration purposes and will be replaced with real content.)',
     philosophy: '"Art is a scream—a way to externalize the chaos within."',
   },
   {
     name: 'Amara Solaris',
     work: '/images/work-artist-3.png',
-    bio: 'Amara Solaris is a visionary Afrofuturist artist from Lagos, Nigeria, whose work celebrates African heritage through a cosmic, speculative lens. Blending traditional African aesthetics with futuristic technology, Amara creates vibrant, otherworldly pieces that imagine a future where African culture thrives in interstellar dimensions. Their art often features bioluminescent elements, holographic motifs, and intricate tribal patterns, reflecting a deep connection to ancestry while embracing the possibilities of Web3 and the metaverse. Amara’s works have been featured in virtual exhibitions on platforms like The Sandbox, and they are an active member of several Web3 art DAOs.',
+    bio: 'Amara Solaris is a visionary Afrofuturist artist from Lagos, Nigeria, whose work celebrates African heritage through a cosmic, speculative lens. Blending traditional African aesthetics with futuristic technology, Amara creates vibrant, otherworldly pieces that imagine a future where African culture thrives in interstellar dimensions. Their art often features bioluminescent elements, holographic motifs, and intricate tribal patterns, reflecting a deep connection to ancestry while embracing the possibilities of Web3 and the metaverse. Amara’s works have been featured in virtual exhibitions on platforms like The Sandbox, and they are an active member of several Web3 art DAOs. (Note: This artist profile and artwork are AI-generated placeholders for demonstration purposes and will be replaced with real content.)',
     philosophy: '"My art is a bridge between the ancestral and the cosmic—a celebration of African heritage reimagined in a boundless future."',
   },
 ];
 
 // Moments (carousel, 3 per view)
 const moments = [
-  { src: '/images/moment-1.png', caption: 'Zoom Meeting' },
-  { src: '/images/moment-2.png', caption: 'AMA session with creators' },
-  { src: '/images/moment-3.png', caption: 'Celebration on Decentraland' },
+  { src: '/images/moment-1.png', caption: 'Zoom Meeting (AI-generated placeholder)' },
+  { src: '/images/moment-2.png', caption: 'AMA session with creators (AI-generated placeholder)' },
+  { src: '/images/moment-3.png', caption: 'Celebration on Decentraland (AI-generated placeholder)' },
 ];
 
 export default function Home() {
@@ -139,6 +138,14 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
+        {/* Disclaimer Section */}
+        <section className={styles.disclaimer}>
+          <h2 className="font-poppins">Disclaimer: AI-Generated Content</h2>
+          <p className="font-roboto">
+            The artists, artworks, and images displayed on this website are AI-generated placeholders used for development and demonstration purposes. They do not represent real artists or artworks. We are currently in the beta phase of Nolens, and these placeholders allow us to test and refine the platform’s functionality, design, and user experience. We are actively working to onboard real creators and will replace this content with authentic artist contributions before our official launch. Thank you for your understanding as we build Nolens!
+          </p>
+        </section>
+
         {/* Hero Section: Static Text Overlay on Carousel */}
         <motion.section
           className={styles.hero}
@@ -162,7 +169,7 @@ export default function Home() {
                 >
                   <Image
                     src={image}
-                    alt={`Hero Art ${idx + 1}`}
+                    alt={`Hero Art ${idx + 1} (AI-generated placeholder)`}
                     fill
                     style={{ objectFit: 'cover' }}
                     className={styles.heroImage}
@@ -209,7 +216,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Works</h3>
-          <p className="font-roboto">Explore community favorites curated from the Nolens gallery.</p>
+          <p className="font-roboto">Explore community favorites curated from the Nolens gallery (AI-generated placeholders).</p>
           <div className={styles.worksGrid}>
             {worksImages.map((work, idx) => (
               <motion.div
@@ -223,7 +230,7 @@ export default function Home() {
                 <div className={styles.workImageWrapper}>
                   <Image
                     src={work.src}
-                    alt={work.title}
+                    alt={`${work.title} (AI-generated placeholder)`}
                     fill
                     style={{ objectFit: 'cover' }}
                     className={styles.workImage}
@@ -234,7 +241,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h4 className="font-poppins">{work.title}</h4>
-                <p className="font-roboto">By {work.artist}</p>
+                <p className="font-roboto">By {work.artist} (AI-generated)</p>
               </motion.div>
             ))}
           </div>
@@ -250,7 +257,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Special Exhibitions</h3>
-          <p className="font-roboto">Discover events curated by the Nolens DAO, art collectives, and galleries.</p>
+          <p className="font-roboto">Discover events curated by the Nolens DAO, art collectives, and galleries (AI-generated placeholders).</p>
           <div className={styles.exhibitionCarousel}>
             <div
               className={styles.exhibitionTrack}
@@ -268,14 +275,14 @@ export default function Home() {
                   <div className={styles.exhibitionCard}>
                     <Image
                       src={exhibition.src}
-                      alt={exhibition.title}
+                      alt={`${exhibition.title} (AI-generated placeholder)`}
                       width={500}
                       height={750}
                       className={styles.exhibitionImage}
                       onError={() => console.log(`Failed to load image: ${exhibition.src}`)}
                     />
                     <h4 className="font-poppins">{exhibition.title}</h4>
-                    <p className="font-roboto">Hosted by {exhibition.host}</p>
+                    <p className="font-roboto">Hosted by {exhibition.host} (AI-generated)</p>
                   </div>
                 </div>
               ))}
@@ -302,7 +309,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Meet the Artists</h3>
-          <p className="font-roboto">Get to know the creators behind the art on Nolens.</p>
+          <p className="font-roboto">Get to know the creators behind the art on Nolens (AI-generated placeholders).</p>
           <div className={styles.artistList}>
             {artists.map((artist, idx) => (
               <motion.div
@@ -323,7 +330,7 @@ export default function Home() {
                   <div className={styles.artistWork}>
                     <Image
                       src={artist.work}
-                      alt={`${artist.name}'s Work`}
+                      alt={`${artist.name}'s Work (AI-generated placeholder)`}
                       width={300}
                       height={300}
                       className={styles.artistWorkImage}
@@ -347,7 +354,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Moments</h3>
-          <p className="font-roboto">Highlights from the Nolens community.</p>
+          <p className="font-roboto">Highlights from the Nolens community (AI-generated placeholders).</p>
           <div className={styles.momentsCarousel}>
             <div
               className={styles.momentsTrack}
