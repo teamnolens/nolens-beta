@@ -6,32 +6,62 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css';
 
+// Types for the data arrays
+interface HeroImage {
+  src: string;
+}
+
+interface WorkImage {
+  src: string;
+  title: string;
+  artist: string;
+  tag: string;
+}
+
+interface Exhibition {
+  src: string;
+  title: string;
+  host: string;
+}
+
+interface Artist {
+  name: string;
+  work: string;
+  bio: string;
+  philosophy: string;
+}
+
+interface Moment {
+  src: string;
+  caption: string;
+}
+
 // Hero carousel images (diverse art)
-const heroImages = [
-  '/images/hero-art-1.png', // Placeholder for a classic artwork
-  '/images/hero-art-2.png',
-  '/images/hero-art-3.png',
+const heroImages: HeroImage[] = [
+  { src: '/images/hero-art-1.png' },
+  { src: '/images/hero-art-2.png' },
+  { src: '/images/hero-art-3.png' },
 ];
 
 // Works (static grid)
-const worksImages = [
-  { src: '/images/work-1.png', title: 'Artwork 1', artist: 'Artist 1' },
-  { src: '/images/work-2.png', title: 'Artwork 2', artist: 'Artist 2' },
-  { src: '/images/work-3.png', title: 'Artwork 3', artist: 'Artist 3' },
-  { src: '/images/work-4.png', title: 'Artwork 4', artist: 'Artist 4' },
-  { src: '/images/work-5.png', title: 'Artwork 5', artist: 'Artist 5' },
-  { src: '/images/work-6.png', title: 'Artwork 6', artist: 'Artist 6' },
+const worksImages: WorkImage[] = [
+  { src: '/images/work-1.png', title: 'Artwork 1', artist: 'Artist 1', tag: '#Dystopian' },
+  { src: '/images/work-2.png', title: 'Artwork 2', artist: 'Artist 2', tag: '#PopArt' },
+  { src: '/images/work-3.png', title: 'Artwork 3', artist: 'Artist 3', tag: '#Abstract' },
+  { src: '/images/work-4.png', title: 'Artwork 4', artist: 'Artist 4', tag: '#Surrealism' },
+  { src: '/images/work-5.png', title: 'Artwork 5', artist: 'Artist 5', tag: '#Minimalism' },
+  { src: '/images/work-6.png', title: 'Artwork 6', artist: 'Artist 6', tag: '#Vaporwave' },
 ];
 
 // Special Exhibitions (carousel, vertically long rectangle)
-const exhibitions = [
+const exhibitions: Exhibition[] = [
   { src: '/images/exhibition-1.png', title: 'Timeless Classics', host: 'Nolens DAO' },
   { src: '/images/exhibition-2.png', title: 'Modern Masters', host: 'Art Collective' },
   { src: '/images/exhibition-3.png', title: 'Abstract Visions', host: 'Gallery X' },
 ];
 
 // Meet the Artists (scrollable section)
-const artists = [
+const artists: Artist[] = [
   {
     name: 'Kael Vortex',
     work: '/images/work-artist-1.png',
@@ -53,7 +83,7 @@ const artists = [
 ];
 
 // Moments (carousel, 3 per view)
-const moments = [
+const moments: Moment[] = [
   { src: '/images/moment-1.png', caption: 'Zoom Meeting (AI-generated placeholder)' },
   { src: '/images/moment-2.png', caption: 'AMA session with creators (AI-generated placeholder)' },
   { src: '/images/moment-3.png', caption: 'Celebration on Decentraland (AI-generated placeholder)' },
@@ -61,59 +91,59 @@ const moments = [
 
 export default function Home() {
   // Custom carousel state for Hero
-  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
-  const heroSlidesToShow = 1;
+  const [currentHeroIndex, setCurrentHeroIndex] = useState<number>(0);
+  const heroSlidesToShow: number = 1;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentHeroIndex((prevIndex) =>
         prevIndex === heroImages.length - heroSlidesToShow ? 0 : prevIndex + 1
       );
-    }, 5000); // Autoplay every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleHeroDotClick = (index: number) => {
+  const handleHeroDotClick = (index: number): void => {
     setCurrentHeroIndex(index);
   };
 
   // Custom carousel state for Special Exhibitions
-  const [currentExhibitionIndex, setCurrentExhibitionIndex] = useState(0);
-  const exhibitionSlidesToShow = 1;
+  const [currentExhibitionIndex, setCurrentExhibitionIndex] = useState<number>(0);
+  const exhibitionSlidesToShow: number = 1;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentExhibitionIndex((prevIndex) =>
         prevIndex === exhibitions.length - exhibitionSlidesToShow ? 0 : prevIndex + 1
       );
-    }, 3000); // Autoplay every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleExhibitionDotClick = (index: number) => {
+  const handleExhibitionDotClick = (index: number): void => {
     setCurrentExhibitionIndex(index);
   };
 
   // Custom carousel state for Moments
-  const [currentMomentIndex, setCurrentMomentIndex] = useState(0);
-  const [slidesToShow, setSlidesToShow] = useState(3); // Default: 3 slides per view on desktop
+  const [currentMomentIndex, setCurrentMomentIndex] = useState<number>(0);
+  const [slidesToShow, setSlidesToShow] = useState<number>(3);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMomentIndex((prevIndex) =>
         prevIndex === moments.length - slidesToShow ? 0 : prevIndex + 1
       );
-    }, 3000); // Autoplay every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, [slidesToShow]);
 
-  const handleMomentDotClick = (index: number) => {
+  const handleMomentDotClick = (index: number): void => {
     setCurrentMomentIndex(index);
   };
 
   // Responsive slides to show
-  const updateSlidesToShow = () => {
-    if (typeof window === 'undefined') return 3; // SSR fallback
+  const updateSlidesToShow = (): number => {
+    if (typeof window === 'undefined') return 3;
     if (window.innerWidth <= 480) return 1;
     if (window.innerWidth <= 768) return 2;
     return 3;
@@ -123,7 +153,7 @@ export default function Home() {
     const handleResize = () => {
       setSlidesToShow(updateSlidesToShow());
     };
-    handleResize(); // Initial call
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -134,6 +164,14 @@ export default function Home() {
         <h1 className="font-poppins">Nolens</h1>
         <div className={styles.headerActions}>
           <Link href="/dashboard" className={styles.headerLink}>Dashboard</Link>
+          <Link href="/qna" className={styles.headerLink}>Q&A</Link>
+          <Link href="/join" className={styles.headerLink}>Join Beta</Link>
+          <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer">
+            <Image src="/icons/x-icon.svg" alt="X" width={24} height={24} />
+          </a>
+          <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer">
+            <Image src="/icons/discord-icon.svg" alt="Discord" width={24} height={24} />
+          </a>
           <button className={styles.profileButton}>Connect Wallet</button>
         </div>
       </header>
@@ -146,7 +184,7 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Hero Section: Static Text Overlay on Carousel */}
+        {/* Hero Section */}
         <motion.section
           className={styles.hero}
           initial={{ opacity: 0 }}
@@ -168,16 +206,16 @@ export default function Home() {
                   style={{ flex: `0 0 ${100 / heroSlidesToShow}%` }}
                 >
                   <Image
-                    src={image}
+                    src={image.src}
                     alt={`Hero Art ${idx + 1} (AI-generated placeholder)`}
                     fill
                     style={{ objectFit: 'cover' }}
                     className={styles.heroImage}
-                    onError={(e) => {
-                      console.log(`Failed to load hero image: ${image}`);
-                      e.currentTarget.src = 'https://picsum.photos/1920/1080?random=' + (idx + 1); // Fallback to placeholder
+                    onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                      console.log(`Failed to load hero image: ${image.src}`);
+                      e.currentTarget.src = '/images/fallback-hero.png';
                     }}
-                    priority // Ensure all images load immediately
+                    priority
                   />
                   <div className={styles.heroOverlay} />
                 </div>
@@ -189,10 +227,14 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <h2 className="font-poppins">Weave Art with Narratives at Nolens</h2>
+              <h2 className="font-poppins">
+                A Leading Web3 Art Community
+              </h2>
+              <p className="font-roboto" style={{ fontSize: '1.25rem', margin: '1rem 0' }}>
+                connects creators, collectives, and galleries through NFTs.
+              </p>
               <div className={styles.heroButtons}>
-                <Link href="/gallery" className={styles.ctaButton}>Discover Art</Link>
-                <Link href="/community" className={styles.ctaButtonSecondary}>Join the DAO</Link>
+                <Link href="/join" className={styles.ctaButton}>Join the Beta</Link>
               </div>
             </motion.div>
             <div className={styles.heroDots}>
@@ -207,7 +249,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Works Section (Static Grid, 2-3 per Row) */}
+        {/* Works Section */}
         <motion.section
           className={styles.section}
           initial={{ opacity: 0 }}
@@ -216,7 +258,9 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Works</h3>
-          <p className="font-roboto">Explore community favorites curated from the Nolens gallery (AI-generated placeholders).</p>
+          <p className="font-roboto">
+            Community Favorites Curated by Noleners Using Scores, Views, and Tags (AI-generated placeholders).
+          </p>
           <div className={styles.worksGrid}>
             {worksImages.map((work, idx) => (
               <motion.div
@@ -237,18 +281,19 @@ export default function Home() {
                     onError={() => console.log(`Failed to load image: ${work.src}`)}
                   />
                   <div className={styles.workOverlay}>
-                    <p className="font-roboto">View Details</p>
+                    <p className="font-roboto">Join to Explore</p>
                   </div>
                 </div>
                 <h4 className="font-poppins">{work.title}</h4>
                 <p className="font-roboto">By {work.artist} (AI-generated)</p>
+                <span className={styles.workTag}>{work.tag}</span>
               </motion.div>
             ))}
           </div>
           <Link href="/gallery" className={styles.sectionLink}>View More in Gallery</Link>
         </motion.section>
 
-        {/* Special Exhibitions Section (Custom Carousel) */}
+        {/* Special Exhibitions Section */}
         <motion.section
           className={styles.section}
           initial={{ opacity: 0 }}
@@ -257,7 +302,9 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Special Exhibitions</h3>
-          <p className="font-roboto">Discover events curated by the Nolens DAO, art collectives, and galleries (AI-generated placeholders).</p>
+          <p className="font-roboto">
+            Curated by Noleners DAO and our partners (AI-generated placeholders).
+          </p>
           <div className={styles.exhibitionCarousel}>
             <div
               className={styles.exhibitionTrack}
@@ -300,7 +347,7 @@ export default function Home() {
           <Link href="/events" className={styles.sectionLink}>Explore All Events</Link>
         </motion.section>
 
-        {/* Meet the Artists Section (Centered Layout) */}
+        {/* Meet the Artists Section */}
         <motion.section
           className={styles.section}
           initial={{ opacity: 0 }}
@@ -309,7 +356,9 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Meet the Artists</h3>
-          <p className="font-roboto">Get to know the creators behind the art on Nolens (AI-generated placeholders).</p>
+          <p className="font-roboto">
+            Get to know the creators behind the art on Nolens (AI-generated placeholders).
+          </p>
           <div className={styles.artistList}>
             {artists.map((artist, idx) => (
               <motion.div
@@ -343,9 +392,10 @@ export default function Home() {
             ))}
           </div>
           <Link href="/artists" className={styles.sectionLink}>Meet More Artists</Link>
+          <Link href="/join" className={styles.ctaButtonSmall}>Become a Creator</Link>
         </motion.section>
 
-        {/* Moments Section (Custom Carousel) */}
+        {/* Moments Section */}
         <motion.section
           className={styles.section}
           initial={{ opacity: 0 }}
@@ -354,7 +404,9 @@ export default function Home() {
           transition={{ duration: 0.8 }}
         >
           <h3 className="font-poppins">Moments</h3>
-          <p className="font-roboto">Highlights from the Nolens community (AI-generated placeholders).</p>
+          <p className="font-roboto">
+            Highlights from the Nolens Community Hub (AI-generated placeholders).
+          </p>
           <div className={styles.momentsCarousel}>
             <div
               className={styles.momentsTrack}
@@ -393,12 +445,25 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <Link href="/community" className={styles.sectionLink}>See More Moments</Link>
+          <Link href="/join" className={styles.ctaButtonSmall}>Join the DAO</Link>
         </motion.section>
 
         {/* Footer */}
         <footer className={styles.footer}>
-          <p className="font-roboto">© 2025 Nolens. All rights reserved.</p>
+          <p className="font-roboto">
+            © 2025 Nolens. All rights reserved. | Contact: @nolensprotocol on{' '}
+            <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
+              X
+            </a>{' '}
+            &{' '}
+            <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
+              Discord
+            </a>{' '}
+            |{' '}
+            <a href="https://nolens.xyz/principles" style={{ color: '#D4AF37' }}>
+              Our Principles
+            </a>
+          </p>
         </footer>
       </main>
     </div>
