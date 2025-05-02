@@ -163,15 +163,10 @@ export default function Home() {
       <header className={styles.header}>
         <h1 className="font-poppins">Nolens</h1>
         <div className={styles.headerActions}>
+          <Link href="/" className={styles.headerLink}>Home</Link>
           <Link href="/dashboard" className={styles.headerLink}>Dashboard</Link>
           <Link href="/qna" className={styles.headerLink}>Q&A</Link>
-          <Link href="/join" className={styles.headerLink}>Join Beta</Link>
-          <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer">
-            <Image src="/icons/x-icon.svg" alt="X" width={24} height={24} />
-          </a>
-          <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer">
-            <Image src="/icons/discord-icon.svg" alt="Discord" width={24} height={24} />
-          </a>
+          <Link href="/membership" className={styles.headerLink}>Pricing</Link>
           <button className={styles.profileButton}>Connect Wallet</button>
         </div>
       </header>
@@ -234,7 +229,7 @@ export default function Home() {
                 connects creators, collectives, and galleries through NFTs.
               </p>
               <div className={styles.heroButtons}>
-                <Link href="/join" className={styles.ctaButton}>Join the Beta</Link>
+                <Link href="/dashboard" className={styles.ctaButton}>Explore our Community</Link>
               </div>
             </motion.div>
             <div className={styles.heroDots}>
@@ -392,7 +387,7 @@ export default function Home() {
             ))}
           </div>
           <Link href="/artists" className={styles.sectionLink}>Meet More Artists</Link>
-          <Link href="/join" className={styles.ctaButtonSmall}>Become a Creator</Link>
+          <Link href="/dashboard" className={styles.ctaButtonSmall}>Become a Creator</Link>
         </motion.section>
 
         {/* Moments Section */}
@@ -445,27 +440,27 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <Link href="/join" className={styles.ctaButtonSmall}>Join the DAO</Link>
+          <Link href="/dashboard" className={styles.ctaButtonSmall}>Join our Community</Link>
         </motion.section>
-
-        {/* Footer */}
-        <footer className={styles.footer}>
-          <p className="font-roboto">
-            © 2025 Nolens. All rights reserved. | Contact: @nolensprotocol on{' '}
-            <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
-              X
-            </a>{' '}
-            &{' '}
-            <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
-              Discord
-            </a>{' '}
-            |{' '}
-            <a href="https://nolens.xyz/principles" style={{ color: '#D4AF37' }}>
-              Our Principles
-            </a>
-          </p>
-        </footer>
       </main>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <p className="font-roboto">
+          © 2025 Nolens. All rights reserved. | Contact: @nolensprotocol on{' '}
+          <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
+            X
+          </a>{' '}
+          &{' '}
+          <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
+            Discord
+          </a>{' '}
+          |{' '}
+          <a href="https://nolens.xyz/principles" style={{ color: '#D4AF37' }}>
+            Our Principles
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

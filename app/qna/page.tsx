@@ -8,15 +8,10 @@ export default function QnA() {
       <header className={styles.header}>
         <h1 className="font-poppins">Nolens</h1>
         <div className={styles.headerActions}>
+          <Link href="/" className={styles.headerLink}>Home</Link>
           <Link href="/dashboard" className={styles.headerLink}>Dashboard</Link>
           <Link href="/qna" className={styles.headerLink}>Q&A</Link>
-          <Link href="/join" className={styles.headerLink}>Join Beta</Link>
-          <a href="https://x.com/nolensprotocol" target="_blank" rel="noopener noreferrer">
-            <Image src="/icons/x-icon.svg" alt="X" width={24} height={24} />
-          </a>
-          <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer">
-            <Image src="/icons/discord-icon.svg" alt="Discord" width={24} height={24} />
-          </a>
+          <Link href="/membership" className={styles.headerLink}>Pricing</Link>
           <button className={styles.profileButton}>Connect Wallet</button>
         </div>
       </header>
@@ -77,7 +72,7 @@ export default function QnA() {
               </p>
             </div>
           </div>
-          <Link href="/join" className={styles.ctaButtonSmall}>Join the Beta</Link>
+          <Link href="/dashboard" className={styles.ctaButtonSmall}>Join our Community</Link>
         </section>
       </main>
       <footer className={styles.footer}>
