@@ -452,7 +452,7 @@ export default function Home() {
             X
           </a>{' '}
           &{' '}
-          <a href="https://discord.gg/nolens" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
+          <a href="https://discord.gg/XPUf73Bf" target="_blank" rel="noopener noreferrer" style={{ color: '#D4AF37' }}>
             Discord
           </a>{' '}
           |{' '}
